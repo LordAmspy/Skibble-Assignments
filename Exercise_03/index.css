@@ -1,0 +1,26 @@
+body{
+  background-color: white;
+}
+.container {
+  background-color: grey;
+  margin-top: 80px;
+  margin-left: 40%;
+  width: fit-content;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+}
+#txt1,#txt2,#txt3{
+  border-radius: 10px;
+}
+#btn {
+  cursor: pointer;
+  border-radius: 5px;
+  width: 30px;
+}
+.btn{
+  display: flex;
+  justify-content: space-between;
+}
