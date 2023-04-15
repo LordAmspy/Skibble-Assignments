@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registration form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+
+    :root {
+      /* Base font size */
+      font-size: 10px;
+
+      /* Set neon color */
+      --neon-text-color: #f40;
+      --neon-border-color: #08f;
+    }
+
+    body {
+      background-image: url("./bg.webp");
+      background-repeat: no-repeat;
+      font-family: 'Dongle', sans-serif;
+    }
+
+    .dob {
+      background: transparent;
+      color: rgb(182, 176, 176);
+      padding: 5px;
+      width: 160px;
+      border: 2px solid rgb(152, 148, 148);
+      margin-top: 8px;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 5px;
+      margin-right: 2px;
+      filter: invert(0.8) sepia(100%) saturate(10000%) hue-rotate(240deg);
+    }
+
+    .head {
+      background-color: rgb(rgb(146, 154, 255));
+      color: rgb(30, 32, 32);
+
+      text-align: center;
+      padding: 7px;
+    }
+
+    h1 h2 {
+      padding-top: 50px;
+      text-align: center;
+    }
+
+    label {
+      color: white;
+
+    }
+
+    .navigationWrapper {
+      padding: 20px;
+      background-image: url("https://e1.pxfuel.com/desktop-wallpaper/330/345/desktop-wallpaper-blue-anime-aesthetic-kawaii-aesthetic-horizontal-thumbnail.jpg");
+      background-repeat: repeat-x;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      font-size: 30px;
+      text-transform: uppercase;
+      width: auto;
+      margin: 10px;
+    }
+
+    .main {
+      display: flex;
+      justify-content: center;
+      margin: 25px;
+    }
+
+    .part1 {
+      border: 1px solid black;
+      color: white;
+      background-image: url("./img1.webp");
+      width: 1000px;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      justify-content: center;
+    }
+
+    .part1 .placeholder {
+      color: #000;
+    }
+
+    .part1 .i1 {
+      color: white;
+    }
+
+    .box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form {
+      /* display: inline; */
+      color: rgb(1, 1, 1);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    radio {
+
+      cursor: pointer;
+    }
+
+    button {
+      border: none;
+      background: transparent;
+      text-decoration: underline;
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: blue;
+      font-weight: 550;
+    }
+
+    p {
+      color: white;
+      font-weight: 550;
+    }
+
+    button:hover {
+      color: black;
+    }
+
+    .form__group {
+      position: relative;
+      padding: 20px 0 0;
+      width: 100%;
+      max-width: 180px;
+    }
+
+    .form__field {
+      font-family: inherit;
+      width: 100%;
+      border: none;
+      border-bottom: 2px solid #9b9b9b;
+      outline: 0;
+      font-size: 17px;
+      color: #fff;
+      padding: 7px 0;
+      background: transparent;
+      transition: border-color 0.2s;
+    }
+
+    .form__field::placeholder {
+      color: transparent;
+    }
+
+    .form__field:placeholder-shown~.form__label {
+      font-size: 17px;
+      cursor: text;
+      top: 20px;
+    }
+
+    .form__label {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.2s;
+      font-size: 17px;
+      color: #9b9b9b;
+      pointer-events: none;
+    }
+
+    .form__field:focus {
+      padding-bottom: 6px;
+      font-weight: 700;
+      border-width: 3px;
+      border-image: linear-gradient(to right, #116399, #38caef);
+      border-image-slice: 1;
+    }
+
+    .form__field:focus~.form__label {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.2s;
+      font-size: 17px;
+      color: #38caef;
+      font-weight: 700;
+    }
+
+    /* reset input */
+    .form__field:required,
+    .form__field:invalid {
+      box-shadow: none;
+    }
+
+    .customCheckBoxHolder {
+      margin: 5px;
+      display: flex;
+    }
+
+    .customCheckBox {
+      width: fit-content;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
+      padding: 2px 8px;
+      background-color: rgba(0, 0, 0, 0.16);
+      border-radius: 0px;
+      color: rgba(255, 255, 255, 0.7);
+      transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition-duration: 300ms;
+      transition-property: color, background-color, box-shadow;
+      display: flex;
+      height: 32px;
+      align-items: center;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px 1px 1px 0px;
+      outline: none;
+      justify-content: center;
+      min-width: 55px;
+    }
+
+    .customCheckBox:hover {
+      background-color: #2c2c2c;
+      color: white;
+      box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px;
+    }
+
+    .customCheckBox .inner {
+      font-size: 18px;
+      font-weight: 900;
+      pointer-events: none;
+      transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+      transition-duration: 300ms;
+      transition-property: transform;
+      transform: translateY(0px);
+    }
+
+    .customCheckBox:hover .inner {
+      transform: translateY(-2px);
+    }
+
+    .customCheckBoxWrapper:first-of-type .customCheckBox {
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+      border-right: 0px;
+    }
+
+    .customCheckBoxWrapper:last-of-type .customCheckBox {
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+      border-left: 0px;
+    }
+
+    .customCheckBoxInput {
+      display: none;
+    }
+
+    .customCheckBoxInput:checked+.customCheckBoxWrapper .customCheckBox {
+      background-color: #2d6737;
+      color: white;
+      box-shadow: rgba(0, 0, 0, 0.23) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.17) 0px 2px 4px 1px;
+    }
+
+    .customCheckBoxInput:checked+.customCheckBoxWrapper .customCheckBox .inner {
+      transform: translateY(-2px);
+    }
+
+    .customCheckBoxInput:checked+.customCheckBoxWrapper .customCheckBox:hover {
+      background-color: #34723f;
+      box-shadow: rgba(0, 0, 0, 0.26) 0px -4px 1px 0px inset, rgba(255, 255, 255, 0.17) 0px -1px 1px 0px, rgba(0, 0, 0, 0.15) 0px 3px 6px 2px;
+    }
+
+    .customCheckBoxWrapper .customCheckBox:hover .inner {
+      transform: translateY(-2px);
+    }
+
+    .checkbox {
+      padding: 8px;
+    }
+
+    a {
+      position: relative;
+      display: inline-block;
+      padding: 8px 15px;
+      font-weight: bold;
+      color: #fff;
+      font-size: 16px;
+      text-decoration: none;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: .5s;
+      margin-top: 20px;
+      letter-spacing: 3px
+    }
+
+    a:hover {
+      background: #fff;
+      color: #272727;
+      border-radius: 5px;
+    }
+
+    a span {
+      position: absolute;
+      display: block;
+    }
+
+    a span:nth-child(1) {
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #fff);
+      animation: btn-anim1 1.5s linear infinite;
+    }
+
+    @keyframes btn-anim1 {
+      0% {
+        left: -100%;
+      }
+
+      50%,
+      100% {
+        left: 100%;
+      }
+    }
+
+    a span:nth-child(2) {
+      top: -100%;
+      right: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, #fff);
+      animation: btn-anim2 1.5s linear infinite;
+      animation-delay: .375s
+    }
+
+    @keyframes btn-anim2 {
+      0% {
+        top: -100%;
+      }
+
+      50%,
+      100% {
+        top: 100%;
+      }
+    }
+
+    a span:nth-child(3) {
+      bottom: 0;
+      right: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(270deg, transparent, #fff);
+      animation: btn-anim3 1.5s linear infinite;
+      animation-delay: .75s
+    }
+
+    @keyframes btn-anim3 {
+      0% {
+        right: -100%;
+      }
+
+      50%,
+      100% {
+        right: 100%;
+      }
+    }
+
+    a span:nth-child(4) {
+      bottom: -100%;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(360deg, transparent, #fff);
+      animation: btn-anim4 1.5s linear infinite;
+      animation-delay: 1.125s
+    }
+
+    @keyframes btn-anim4 {
+      0% {
+        bottom: -100%;
+      }
+
+      50%,
+      100% {
+        bottom: 100%;
+      }
+    }
+
+    .center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #B0FE76;
+    }
+
+    h1 {
+      /* font-size: 13rem;
+  font-weight: 200; */
+      font-style: italic;
+      color: #fff;
+      padding: 4rem 6rem 5.5rem;
+      border: 0.4rem solid #fff;
+      border-radius: 2rem;
+      text-transform: uppercase;
+      animation: flicker 1.5s infinite alternate;
+    }
+
+    h1::-moz-selection {
+      background-color: var(--neon-border-color);
+      color: var(--neon-text-color);
+    }
+
+    h1::selection {
+      background-color: var(--neon-border-color);
+      color: var(--neon-text-color);
+    }
+
+    h1:focus {
+      outline: none;
+    }
+
+    /* Animate neon flicker */
+    @keyframes flicker {
+
+      0%,
+      19%,
+      21%,
+      23%,
+      25%,
+      54%,
+      56%,
+      100% {
+
+        text-shadow:
+          -0.2rem -0.2rem 1rem #fff,
+          0.2rem 0.2rem 1rem #fff,
+          0 0 2rem var(--neon-text-color),
+          0 0 4rem var(--neon-text-color),
+          0 0 6rem var(--neon-text-color),
+          0 0 8rem var(--neon-text-color),
+          0 0 10rem var(--neon-text-color);
+
+        box-shadow:
+          0 0 .5rem #fff,
+          inset 0 0 .5rem #fff,
+          0 0 2rem var(--neon-border-color),
+          inset 0 0 2rem var(--neon-border-color),
+          0 0 4rem var(--neon-border-color),
+          inset 0 0 4rem var(--neon-border-color);
+      }
+
+      20%,
+      24%,
+      55% {
+        text-shadow: none;
+        box-shadow: none;
+      }
+    }
+
+    .part1 {
+      border: 3px solid rgb(19, 8, 19);
+      border-radius: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navigationWrapper">
+    <h1 class="head" style="color: yellow;">Lord_Ampsy Services</h1>
+  </nav>
+  <div class="main">
+    <div class="part1">
+      <div class="center">
+        <h1 contenteditable spellcheck="false">Well hello there!!! random person on the internet<br>Enter into the world
+          of wonders by registering yourself</h1>
+      </div>
+      <form action="file.php" method="get">
+        <div class="form__group field">
+          <input type="input" required class="form__field" placeholder="Name" required="">
+          <label for="name" class="form__label">Name</label>
+        </div>
+        <div class="form__group field">
+          <input type="input" required class="form__field" placeholder="Name" required="">
+          <label for="name" class="form__label">Contact</label>
+        </div>
+
+        <div class="customCheckBoxHolder">
+
+          <input class="customCheckBoxInput" id="cCB1" type="checkbox">
+          <label class="customCheckBoxWrapper" for="cCB1">
+            <div class="customCheckBox">
+              <div class="inner">Male</div>
+            </div>
+          </label>
+
+          <input class="customCheckBoxInput" id="cCB2" type="checkbox">
+          <label class="customCheckBoxWrapper" for="cCB2">
+            <div class="customCheckBox">
+              <div class="inner">Female</div>
+            </div>
+          </label>
+          </label>
+        </div>
+        <label style="color : rgb(141, 139, 139); font-weight:550; font-size: 15px;">Date of Birth:</label>
+        <input type="date" class="dob" placeholder="MM/DD/YYYY" required>
+
+        <div class="form__group field">
+          <input type="email" class="form__field" placeholder="Name" required="">
+          <label for="name" class="form__label">Email</label>
+        </div>
+
+
+
+        <div class="form__group field">
+          <input type="password" class="form__field" placeholder="Name" required="">
+          <label for="name" class="form__label">Password</label>
+        </div>
+        <div class="form__group field">
+          <input type="password" class="form__field" placeholder="Name" required>
+          <label for="name" class="form__label">Confirm password</label>
+        </div>
+
+        <div class="checkbox">
+          <input class="i1" type="checkbox" id="cb1" required />
+          <label for="cb1" style="color:  rgb(143, 141, 141); font-weight:550; font-size: 15px;" required>I Agree to the
+            Terms and
+            Conditions </label>
+        </div>
+        <div class="checkbox">
+          <input class="i1" type="checkbox" id="cb2" required />
+          <label for="cb2" style="color: rgb(143, 141, 141); font-weight:550; font-size: 15px;" required>I want to
+            Receive a copy to my
+            Mail &nbsp;</label>
+        </div>
+
+        <a href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Submit
+        </a>
+
+        <p style="font-size : 15px; font-weight: 650; color:rgb(227, 220, 220)">Already a Member !!</p>
+        <button>Sign In</button>
+    </div>
+
+    </form>
+  </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Contact Form</title>
+	<style>
+
+.main {
+      display: flex;
+      justify-content: center;
+      margin: 25px;
+    }
+    body {
+      background-image: url("./944027.png");
+      background-repeat: no-repeat;
+      font-family: 'Dongle', sans-serif;
+    }
+
+    .navigationWrapper {
+      padding: 20px;
+      background-image: url("https://wallpaperaccess.com/full/937722.jpg");
+      background-repeat: repeat-x;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+      font-size: 30px;
+      text-transform: uppercase;
+      width: auto;
+      margin: 10px;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .part1 {
+      border: 1px solid black;
+      color: white;
+      background-image: url("./d824e17454df9fb300f024c18278145e.jpg");
+      width: 1000px;
+      height: 1000px;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      justify-content: center;
+    }
+
+    .part1 .placeholder {
+      color: #000;
+    }
+    .box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form {
+      /* display: inline; */
+      color: rgb(1, 1, 1);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+            color: white;
+		}
+
+		input[type="text"], textarea {
+			width: 100%;
+			padding: 8px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"] {
+			background-color: #333;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #555;
+		}
+	</style>
+</head>
+<body>
+  <nav class="navigationWrapper">
+    <h1 class="head" style="color: black;">Contact Form</h1>
+  </nav>
+  <div class="main">
+    <div class="part1">
+	<form>
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required>
+
+		<label for="email">Email:</label>
+		<input type="text" id="email" name="email" required>
+
+		<label for="message">Message:</label>
+		<textarea id="message" name="message" rows="5" required></textarea>
+
+		<input type="submit" value="Send">
+    </div>
+    </div>
+	</form>
+</body>
+</html>
